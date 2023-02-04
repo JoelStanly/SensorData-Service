@@ -1,11 +1,29 @@
 package com.aqms.sensordataservice.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 import com.aqms.sensordataservice.model.SensorData;
 
+@Repository
+public class SensorDataRepository {
+	
+	@Autowired
+	DynamoDBMapper mapper;
 
-// Sensor Plot Repository
-public interface SensorDataRepository extends JpaRepository<SensorData, Long>{
+	public SensorData save(SensorData sensorData) {
+		// TODO Auto-generated method stub
+		mapper.save(sensorData);
+		return sensorData;
+	}
 
+	public List<SensorData> findAll() {
+		return mapper.scan(SensorData.class, new DynamoDBScanExpression());
+	}
+	
+	
 }

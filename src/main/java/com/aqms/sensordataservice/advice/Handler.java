@@ -70,11 +70,12 @@ public class Handler {
 	}
 
 	// Generic Exception Handler
-	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-	@ExceptionHandler(Exception.class)
-	public String genericExceptionHandler(Exception ex) {
-		log.info("Generic Exception");
-		return "Generic Exception: Request Failed";
-	}
+	
+	
+	  @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+	  @ExceptionHandler(Exception.class) public String
+	  genericExceptionHandler(Exception ex) { log.info("Generic Exception"); return
+	  "Generic Exception: Request Failed"; }
+	 
 
 }

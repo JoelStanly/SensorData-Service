@@ -15,5 +15,7 @@ public class AppConfig {
 	private String accessKeyId;
 	private String secretKeyId;
 	private String snsEndpoint;
+	private String dynamoDBEndpoint;
+	private String region;
 
 }

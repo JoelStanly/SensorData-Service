@@ -9,8 +9,8 @@ public interface SensorDataService {
 	SensorData saveSensorData(SensorData sensor);
 	List<SensorData> getSensorDataAll();
 	SensorData addSafetyInfo(SensorData sensor);
-	void validSensor(Long sensorid);
 	void notifySafety(SensorData sensorData);
 	String addSubscribe(String email);
+	void validSensor(String sensorid);
 	
 }

@@ -46,7 +46,7 @@ public class SensorDataServiceImplementation implements SensorDataService {
 	// Getting data from the DB
 	@Override
 	public List<SensorData> getSensorDataAll() {
-		return sensorDataRepository.findAll();
+		return (List<SensorData>) sensorDataRepository.findAll();
 	}
 
 	// Adding Safety Informations
@@ -60,7 +60,7 @@ public class SensorDataServiceImplementation implements SensorDataService {
 
 	// Checking whether the sensor is valid based on sensorPlot
 	@Override
-	public void validSensor(Long sensorid) throws InternalServerError {
+	public void validSensor(String sensorid) throws InternalServerError {
 		// TODO Auto-generated method stub
 		restTemplate.getForObject("http://SENSOR-PLOT/SensorPlot/find/" + sensorid,
 				SensorPlot.class);
@@ -74,8 +74,8 @@ public class SensorDataServiceImplementation implements SensorDataService {
 
 	}
 
-	private String safetyMessage(Long sensorid) {
-		SensorPlot sensor = restTemplate.getForObject("http://SENSOR-PLOT/SensorPlot/find/" + sensorid, SensorPlot.class);
+	private String safetyMessage(String string) {
+		SensorPlot sensor = restTemplate.getForObject("http://SENSOR-PLOT/SensorPlot/find/" + string, SensorPlot.class);
 		return "The Room number:" + sensor.getRoom()+"\nThe Floor:" +sensor.getFloor()+"\nHas Detected the air quality values being above than the threshold\nKindly follow the safety precautions";
 	}
 
@@ -85,5 +85,6 @@ public class SensorDataServiceImplementation implements SensorDataService {
 		amazonSNSClient.subscribe(request);
 		return email + "  requested for subscription";
 	}
+
 
 }

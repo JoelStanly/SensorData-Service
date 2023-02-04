@@ -108,7 +108,7 @@ public class SensorDataControllerTest {
 	// Mock Sensor Data
 	private SensorData getMockSensorData() {
 		BigDecimal value = new BigDecimal(45.2112);
-		return SensorData.builder().dataId(1L).sensorid(1L).o2(value).co2(value).so2(value).co(value).c(value).safeValue(value).safety(true)
+		return SensorData.builder().dataId("1l").sensorid("1").o2(value).co2(value).so2(value).co(value).c(value).safeValue(value).safety(true)
 				.build();
 	}
 	// Mock Sensor Plot

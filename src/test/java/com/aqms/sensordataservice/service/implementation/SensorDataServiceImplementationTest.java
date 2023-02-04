@@ -120,7 +120,7 @@ public class SensorDataServiceImplementationTest {
 		//Mocking
 		when(restTemplate.getForObject(anyString(), any())).thenReturn(getMockSensorPlot());
 		//Actual
-		sensorDataService.validSensor(1L);
+		sensorDataService.validSensor("1");
 		//verify
 		verify(restTemplate,times(1)).getForObject(anyString(), any());
 	}
@@ -131,7 +131,7 @@ public class SensorDataServiceImplementationTest {
 		//Mocking
 		when(restTemplate.getForObject(anyString(), any())).thenThrow(InternalServerError.class);
 		//Actual/Assert
-		assertThrows(InternalServerError.class, ()->sensorDataService.validSensor(1L));
+		assertThrows(InternalServerError.class, ()->sensorDataService.validSensor("1"));
 		//verify
 		verify(restTemplate,times(1)).getForObject(anyString(), any());
 	}
@@ -139,7 +139,7 @@ public class SensorDataServiceImplementationTest {
 	// Mock Sensor Data
 	private SensorData getMockSensorData() {
 		BigDecimal value = new BigDecimal(45.2112);
-		return SensorData.builder().dataId(1L).sensorid(1L).o2(value).co2(value).so2(value).co(value).c(value).safeValue(value).safety(true)
+		return SensorData.builder().dataId("1l").sensorid("1").o2(value).co2(value).so2(value).co(value).c(value).safeValue(value).safety(true)
 				.build();
 	}
 	
